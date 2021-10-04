@@ -1,0 +1,28 @@
+.navbar {
+  background: var(--main-color);
+  display: flex;
+  justify-content: space-around;
+
+  &__link {
+    display: block;
+    padding: 20px;
+    border-bottom: 2px solid var(--main-color);
+
+    &:hover {
+      transition: 0.8ms color;
+      border-bottom: 2px solid var(--red-color);
+      background: var(--aqua-color);
+    }
+
+  }
+}
+
+
+:global {
+  .active {
+    border-bottom: 2px solid var(--red-color);
+    background: var(--aqua-color);
+  }
+}
+
+
