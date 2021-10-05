@@ -27,7 +27,7 @@ export const privatePage = [
         Component: Main
     },
     {
-        path: TODO_CURRENT_PAGE,
+        path: TODO_PAGE + "/:id",
         Component: CurrentPage
     },
     {

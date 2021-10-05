@@ -1,9 +1,10 @@
 import {CHANGE_AUTH_LOGIN_FALSE, CHANGE_AUTH_LOGIN_TRUE} from "../constans/actionType";
+import {getLocalStorage} from "../../utils/localStorage";
 
 
-const initialState = {
-    isAuth: false
-};
+const initialState = getLocalStorage("isAuth");
+
+
 
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {

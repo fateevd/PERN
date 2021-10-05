@@ -2,21 +2,33 @@ import React, {useState} from 'react';
 import MyInput from "../../UiComponent/MyInput/MyInput";
 import style from "./Registration.module.scss"
 import MyButton from "../../UiComponent/Button/MyButton";
-import {Link} from "react-router-dom";
-import {registration} from "../../http/reqest";
+import {Link, useHistory} from "react-router-dom";
+import {login, registration} from "../../http/reqest";
+import {useDispatch} from "react-redux";
+import {sinUp} from "../../store/actions";
+import {TODO_PAGE} from "../../utils/RouteContsts";
 
 
 const Registration = () => {
 
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const sinUpR = async () => {
+        try {
+            const response = await registration(email, password)
+            console.log(response)
+            setPassword('');
+            setEmail('');
+            dispatch(sinUp());
+            history.push(TODO_PAGE);
 
+        }
+        catch (e){
+            alert(e.response.data.message);
+        }
 
-    const sinUp = async () => {
-        const response = await registration(email, password)
-        setPassword('');
-        setEmail('');
-        console.log(response)
     }
 
     return (
@@ -37,7 +49,7 @@ const Registration = () => {
                     value={password}
                 />
             </div>
-            <MyButton  onClick={sinUp} className={style.registration_button}>Регистрация</MyButton>
+            <MyButton  onClick={sinUpR} className={style.registration_button}>Регистрация</MyButton>
             <Link to={"/auth"}>У меня уже есть аккаунт</Link>
         </div>
     );
