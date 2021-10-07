@@ -44,8 +44,8 @@ const Auth = () => {
                     value={password}
                 />
             </div>
-            <MyButton onClick={sinUpR} className={style.registration_button}>Регистрация</MyButton>
-            <Link to={"/auth"}>У меня уже есть аккаунт</Link>
+            <Link to={"/registration"}>У меня нет аккаунта</Link>
+            <MyButton onClick={sinUpR} className={style.registration_button}>Войти</MyButton>
         </div>
     );
 };

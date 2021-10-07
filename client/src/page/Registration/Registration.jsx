@@ -3,7 +3,7 @@ import MyInput from "../../UiComponent/MyInput/MyInput";
 import style from "./Registration.module.scss"
 import MyButton from "../../UiComponent/Button/MyButton";
 import {Link, useHistory} from "react-router-dom";
-import {login, registration} from "../../http/reqest";
+import {registration} from "../../http/reqest";
 import {useDispatch} from "react-redux";
 import {sinUp} from "../../store/actions";
 import {TODO_PAGE} from "../../utils/RouteContsts";
@@ -11,8 +11,8 @@ import {TODO_PAGE} from "../../utils/RouteContsts";
 
 const Registration = () => {
 
-    const [email , setEmail] = useState('');
-    const [password , setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
     const sinUpR = async () => {
@@ -24,8 +24,7 @@ const Registration = () => {
             dispatch(sinUp());
             history.push(TODO_PAGE);
 
-        }
-        catch (e){
+        } catch (e) {
             alert(e.response.data.message);
         }
 
@@ -49,7 +48,7 @@ const Registration = () => {
                     value={password}
                 />
             </div>
-            <MyButton  onClick={sinUpR} className={style.registration_button}>Регистрация</MyButton>
+            <MyButton onClick={sinUpR} className={style.registration_button}>Регистрация</MyButton>
             <Link to={"/auth"}>У меня уже есть аккаунт</Link>
         </div>
     );

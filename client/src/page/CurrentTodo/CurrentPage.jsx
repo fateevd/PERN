@@ -1,14 +1,18 @@
-import React from 'react';
-import {useDispatch} from "react-redux";
-import {sinUp} from "../../store/actions";
+import React, {useEffect, useState} from 'react';
+import {useParams} from "react-router-dom";
+import {responseCurrentTodo} from "../../http/todo-response";
 
 const CurrentPage = () => {
-    const dispatch = useDispatch();
-    dispatch(sinUp())
+    const [todo, setTodo] = useState([]);
+    const {id} = useParams();
+    useEffect(() => {
+        responseCurrentTodo(id).then(data => setTodo(data));
+    }, []);
     return (
         <div>
-            asdad
+            {todo.title},{todo.description}
         </div>
+
     );
 };
 
