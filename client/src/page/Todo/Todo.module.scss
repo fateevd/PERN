@@ -1,0 +1,39 @@
+.todo {
+  width: 80%;
+  margin: 0 auto;
+  &__current {
+    border: 2px solid var(--aqua-color);
+    margin: 10px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__id {
+
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 50px;
+  }
+  &__title {
+    margin-right: 50px;
+  }
+  .span {
+    display: block;
+    padding: 7px;
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+  }
+  &__button {
+    border-radius: 15px;
+    padding: 15px;
+    cursor: pointer;
+    background: none;
+    font-size: 15px;
+
+  }
+}

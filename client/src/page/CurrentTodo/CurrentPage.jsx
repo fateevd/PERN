@@ -10,7 +10,7 @@ const CurrentPage = () => {
     }, []);
     return (
         <div>
-            {todo.title},{todo.description}
+            {todo.title}, {todo.description}
         </div>
 
     );

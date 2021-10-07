@@ -11,3 +11,9 @@ export const responseCurrentTodo = async id => {
     const {data} = await $host.get("/todo/" + id);
     return data;
 }
+
+
+export const deleteTodo = async id => {
+    const data = await $host.delete("/todo/" + id);
+    return data;
+}
