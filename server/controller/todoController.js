@@ -1,10 +1,15 @@
-const {Todo} = require("../models/models");
+const {Todo, User} = require("../models/models");
 const ApiError = require("../error/Apierror");
+const {where} = require("sequelize");
 
 
 class TodoController {
-    async getAllTodo(req, res) {
-        const getTodo = await Todo.findAll()
+    async getAllTodo(req, res, next) {
+        const {userId} = req.query;
+        const getTodo = await Todo.findAll({where: {userId}})
+        if (!getTodo.length) {
+            return next(ApiError.noRequest("Список задач пуст"))
+        }
         res.json(getTodo);
     }
 
@@ -30,6 +35,7 @@ class TodoController {
         const {title, description} = req.body;
         const todo = await Todo.update({title, description}, {where: {id}});
         res.json("Запись обновлена");
+        res.json(todo);
     }
 
     async deleteTodo(req, res, next) {
