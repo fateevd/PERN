@@ -48,6 +48,13 @@ class TodoController {
         const todoDelete = await Todo.destroy({where: {id}});
         res.json("Запись удалена")
     }
+
+    async complete(req, res) {
+        const {id, completed, userId} = req.query;
+        const completeTodo = await Todo.update({completed}, {where: {id}});
+        const getTodo = await Todo.findAll({where: {userId}})
+        res.json(getTodo);
+    }
 }
 
 module.exports = new TodoController()

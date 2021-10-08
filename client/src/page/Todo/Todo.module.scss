@@ -11,6 +11,16 @@
     align-items: center;
     justify-content: space-between;
   }
+  &__checkbox_block {
+    display: flex;
+    align-items: center;
+    flex: 1 1 80% ;
+    input {
+      display: block;
+      margin-right: 50px;
+      padding: 80px;
+    }
+  }
   &__id {
 
     font-size: 20px;
