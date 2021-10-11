@@ -1,0 +1,22 @@
+.current {
+  border: none;
+  outline: none;
+  display: block;
+  margin: 15px;
+  border-bottom: 2px solid black;
+  &__input {
+    border: none;
+    display: block;
+    outline: none;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+    margin: 25px;
+    width: 100%;
+  }
+
+}
+
+.inner {
+  text-align: center;
+  margin: 0 auto;
+}

@@ -5,12 +5,12 @@ import {useHistory} from "react-router-dom";
 import style from "./Todo.module.scss";
 import classname from "classname";
 import MyButton from "../../UiComponent/Button/MyButton";
+import Form from "../../components/Form/Form";
 
 const Todo = () => {
 
 
     const [todo, setTodo] = useState([]);
-
     const token = jwt_decode(localStorage.getItem("token"));
     const userId = token.id;
     const history = useHistory();
@@ -21,7 +21,6 @@ const Todo = () => {
             .then(data => setTodo(data));
     }
 
-
     useEffect(() => {
         chekTodo();
     }, [todo]);
@@ -30,32 +29,37 @@ const Todo = () => {
         event.stopPropagation();
         deleteTodo(id)
             .then(result => alert(result.data))
+        chekTodo();
     }
 
     const onToggle = (event, id) => {
         event.stopPropagation();
-         todo.map(item => {
-                 if (item.id === id) {
-                     item.completed = !item.completed;
-                     onToggleTodo(id,item.completed,userId).then(() => chekTodo());
-                 }
+        todo.map(item => {
+                if (item.id === id) {
+                    item.completed = !item.completed;
+                    onToggleTodo(item.id, item.completed, userId);
+                }
+            }
+        )
 
-             }
-         )
     }
+
+
 
     return (
         <div className="todo">
+            <Form userId={userId} checkTodo={chekTodo}/>
             {
                 todo.map(({id, title, description, completed}, index) =>
-                    <div className={style.todo__current} key={id} onClick={() => history.push(`todo/${id}`)}>
+                    <div className={classname(style.todo__current, completed ? style.todo__completed : style.todo__current)} key={id} onClick={() => history.push(`todo/${id}`)}>
                         <span className={classname(style.todo__id, style.span)}>{index + 1}</span>
                         <div className={classname(style.todo__checkbox_block)}>
-                            <input type="checkbox" checked={completed} onClick={(event => event.stopPropagation())}  onChange={event => onToggle(event,id)}/>
+                            <input type="checkbox" checked={completed} onClick={(event => event.stopPropagation())}
+                                   onChange={event => onToggle(event, id)}/>
 
                             <div className={classname(style.todo__description)}>
                                 <h3 className={classname(style.todo__title, style.span)}>{title}</h3>
-                                <p className={classname(style.span)}>{description}</p>
+                                <p className={classname(classname(style.span,style.span__p))}>{description}</p>
                             </div>
                         </div>
                         <MyButton className={classname(style.todo__button)}
@@ -70,3 +74,4 @@ const Todo = () => {
 };
 
 export default Todo;
+

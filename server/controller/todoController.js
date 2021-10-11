@@ -13,7 +13,7 @@ class TodoController {
         res.json(getTodo);
     }
 
-    async getCurrentTodo(req, res, next) {
+    async getCurrentTodo(req, res) {
         const {id} = req.params;
         const getTodo = await Todo.findOne({where: {id}});
         res.json(getTodo)
@@ -23,19 +23,14 @@ class TodoController {
     async createTodo(req, res) {
         const {title, description, userId} = req.body;
         const todo = await Todo.create({title, description, userId});
-        return res.json(todo);
+        const getTodo = await Todo.findAll({where: {userId}})
+        return res.json(getTodo);
     }
 
-    async updateTodo(req, res, next) {
-        const {id} = req.params;
-        const findId = await Todo.findOne({where: {id}});
-        if (!findId) {
-            return next(ApiError.forbidden("Обновить запись не удалось"))
-        }
-        const {title, description} = req.body;
+    async updateTodo(req, res) {
+        const {title, description, id} = req.query;
         const todo = await Todo.update({title, description}, {where: {id}});
         res.json("Запись обновлена");
-        res.json(todo);
     }
 
     async deleteTodo(req, res, next) {

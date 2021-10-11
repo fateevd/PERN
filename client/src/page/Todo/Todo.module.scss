@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: auto;
   }
   &__checkbox_block {
     display: flex;
@@ -18,7 +19,8 @@
     input {
       display: block;
       margin-right: 50px;
-      padding: 80px;
+      width: 15px;
+      height: 15px;
     }
   }
   &__id {
@@ -30,13 +32,11 @@
   &__title {
     margin-right: 50px;
   }
-  .span {
-    display: block;
-    padding: 7px;
-  }
+
   &__description {
     display: flex;
     flex-direction: column;
+
   }
   &__button {
     border-radius: 15px;
@@ -45,5 +45,32 @@
     background: none;
     font-size: 15px;
 
+  }
+  &__completed {
+    position: relative;
+    border: 2px solid black;
+    color: white;
+    background: black;
+    .todo__button {
+      color: blue;
+    }
+    &::before {
+      content: '';
+      background: red;
+      position: absolute;
+      height: 2px;
+      width: 97%;
+
+    }
+  }
+}
+
+.span {
+  display: block;
+  word-wrap: break-word;
+  overflow: auto;
+  &__p {
+    word-wrap: break-word;
+    overflow: auto;
   }
 }

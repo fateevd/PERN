@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+
+  &__input {
+    width: 70%;
+  }
+
+  &__button {
+    border-radius: 15px;
+    padding: 7px;
+    cursor: pointer;
+    background: none;
+    font-size: 15px;
+
+  }
+}
