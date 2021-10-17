@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 
 const Main = () => {
     const isAuth = useSelector(state => state.authReducer.isAuth);
-    console.log(isAuth)
     return (
         <div style={{fontSize: 35, textAlign: "center",}}>
             {

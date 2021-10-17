@@ -13,8 +13,6 @@ function App() {
             dispatch(sinUp());
         })
             .catch(() => dispatch(logOut()));
-
-
     }, [])
 
     return (
