@@ -4,5 +4,9 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/client" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/mobil" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mobil/react-native-gesture-handler" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mobil/react-native-reanimated" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tesss/mobil" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tesss/my-app" vcs="Git" />
   </component>
 </project>

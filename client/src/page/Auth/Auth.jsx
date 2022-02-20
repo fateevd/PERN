@@ -44,6 +44,7 @@ const Auth = () => {
                     value={password}
                 />
             </div>
+            <input type="text" style={{width: "30", }}/>
             <Link to={"/registration"}>У меня нет аккаунта</Link>
             <MyButton onClick={sinUpR} className={style.registration_button}>Войти</MyButton>
         </div>

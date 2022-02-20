@@ -18,7 +18,6 @@ const Registration = () => {
     const sinUpR = async () => {
         try {
             const response = await registration(email, password)
-            console.log(response)
             setPassword('');
             setEmail('');
             dispatch(sinUp());

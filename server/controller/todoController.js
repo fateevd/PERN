@@ -1,6 +1,6 @@
 const {Todo, User} = require("../models/models");
 const ApiError = require("../error/Apierror");
-const {where} = require("sequelize");
+const {where, order} = require("sequelize");
 
 
 class TodoController {
@@ -23,7 +23,7 @@ class TodoController {
     async createTodo(req, res) {
         const {title, description, userId} = req.body;
         const todo = await Todo.create({title, description, userId});
-        const getTodo = await Todo.findAll({where: {userId}})
+        const getTodo = await Todo.findAll({where: {userId} , order: ['completed']} )
         return res.json(getTodo);
     }
 

@@ -35,13 +35,14 @@ const Todo = () => {
 
     const onToggle = (event, id) => {
         event.stopPropagation();
-        todo.map(item => {
+        setTodo(todo.map(item => {
                 if (item.id === id) {
                     item.completed = !item.completed;
                     onToggleTodo(item.id, item.completed, userId);
                 }
+                return item;
             }
-        )
+        ));
 
     }
     const [input, setInput] = useState('');

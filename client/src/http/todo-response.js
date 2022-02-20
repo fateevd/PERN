@@ -1,5 +1,4 @@
 import {$host} from "./index";
-import axios from "axios";
 
 export const responseTodo = async userId => {
     const {data} = await $host.get(`/todo/todos/?userId=${userId}`)

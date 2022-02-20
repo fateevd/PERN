@@ -17,8 +17,6 @@ const Navbar = () => {
         localStorage.clear();
 
     }
-
-
     return (
         <div>
             {
